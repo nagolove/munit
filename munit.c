@@ -1882,6 +1882,9 @@ munit_suite_main_custom(const MunitSuite* suite, void* user_data,
   runner.seed = munit_rand_generate_seed();
   runner.colorize = munit_stream_supports_ansi(MUNIT_OUTPUT_FILE);
 
+  if (suite->verbose)
+      *suite->verbose = false;
+
   for (arg = 1 ; arg < argc ; arg++) {
     if (strncmp("--", argv[arg], 2) == 0) {
       if (strcmp("seed", argv[arg] + 2) == 0) {
@@ -1994,6 +1997,10 @@ munit_suite_main_custom(const MunitSuite* suite, void* user_data,
         munit_suite_list_tests(suite, 0, NULL);
         result = EXIT_SUCCESS;
         goto cleanup;
+      } else if (strcmp("verbose", argv[arg] + 2) == 0) {
+        if (suite->verbose)
+            *suite->verbose = true;
+        arg++;
       } else if (strcmp("list-params", argv[arg] + 2) == 0) {
         munit_suite_list_tests(suite, 1, NULL);
         result = EXIT_SUCCESS;

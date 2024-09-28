@@ -25,8 +25,8 @@
 #if !defined(MUNIT_H)
 #define MUNIT_H
 
-#include <stdarg.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define MUNIT_VERSION(major, minor, revision) \
   (((major) << 16) | ((minor) << 8) | (revision))
@@ -460,7 +460,7 @@ struct MunitSuite_ {
   MunitSuiteOptions options;
 };
 
-int munit_suite_main(const MunitSuite* suite, void* user_data, int argc, char* const argv[MUNIT_ARRAY_PARAM(argc + 1)]);
+  // Флаг который можно передать через аргументы команды теста для вывода отладочных сообщений.
 
 /* Note: I'm not very happy with this API; it's likely to change if I
  * figure out something better.  Suggestions welcome. */
