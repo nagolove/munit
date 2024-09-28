@@ -458,6 +458,7 @@ struct MunitSuite_ {
   MunitSuite*       suites;
   unsigned int      iterations;
   MunitSuiteOptions options;
+  bool              *verbose;
 };
 
   // Флаг который можно передать через аргументы команды теста для вывода отладочных сообщений.
@@ -477,6 +478,8 @@ int munit_suite_main_custom(const MunitSuite* suite,
                             void* user_data,
                             int argc, char* const argv[MUNIT_ARRAY_PARAM(argc + 1)],
                             const MunitArgument arguments[]);
+int munit_suite_main(const MunitSuite* suite, void* user_data,
+                     int argc, char* const argv[MUNIT_ARRAY_PARAM(argc + 1)]);
 
 #if defined(MUNIT_ENABLE_ASSERT_ALIASES)
 
