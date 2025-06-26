@@ -2,7 +2,7 @@
 # file to your sources.  That said, here is a simple Makefile to build
 # the example.
 
-CSTD:=99
+CSTD:=11
 OPENMP:=n
 ASAN:=n
 UBSAN:=n
